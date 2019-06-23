@@ -1,0 +1,6 @@
+USED_MCUBOARD = LAZURITE mini
+USED_OPTION = LAZURITE mini series
+USED_BAUDRATE = 115200
+LIBRARIES = assert
+LIBRARIES = DebugUtils
+LIBRARIES = Lazurite_Wireless

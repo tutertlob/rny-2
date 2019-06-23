@@ -1,0 +1,28 @@
+{
+	"server": {
+		"port": "3001"
+	},
+	"mongodb": {
+		"host": "localhost",
+		"port": "27017",
+		"db": "iot",
+		"moisture_collection": "soilmoisture",
+		"sensor_collection": "sensor_entities"
+	},
+	"receiverRest": {
+		"host": "localhost",
+		"port": "49152",
+		"url": "receiver/mailboxes",
+		"method": "GET"
+	},
+	"cameras": {
+		"7094": {
+			"name": "mailbox",
+			"dispName": "ポスト"
+		},
+		"0": {
+			"name": "refrigerator",
+			"dispName": "冷蔵庫"
+		}
+	}
+}
