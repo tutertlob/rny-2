@@ -1,0 +1,11 @@
+{
+    "mongodb": {
+        "host": "localhost",
+        "port": 27017,
+        "user": "root",
+        "pass": "example",
+        "db": "rny2",
+        "colMoisture": "soilmoisture",
+        "colSensor": "sensor"
+    }
+}

@@ -4,7 +4,6 @@
 
 <style scoped>
 img {
-  width: 6vw;
-  height: 16vh;
+  width: 50px;
 }
 </style>

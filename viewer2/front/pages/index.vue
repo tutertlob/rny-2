@@ -1,13 +1,15 @@
 <template>
   <section class="container">
     <div class="columns is-multiline is-mobile is-centered">
-      <div v-for="sd in sensorDatas" class="column is-four-fifths">
+      <div v-for="(m, index) in moistures" v-bind:key="index" class="column is-four-fifths">
         <div class="tile is-ancestor box">
           <div class="tile is-4 is-parent">
             <div class="tile is-child">
               <p class="is-size-2">
-                <i class="fas fa-tint has-text-info"></i><br/>
-                {{ sd.data.moisture }}
+                <i v-if="m.moisture < 500" class="fas fa-tint has-text-info"></i>
+                <i v-else class="fas fa-sun has-text-danger"></i>
+                <br />
+                {{ m.moisture }}
               </p>
             </div>
           </div>
@@ -15,13 +17,13 @@
             <div class="tile is-child">
               <p class="is-size-4 has-text-left">
                 <i class="fas fa-seedling has-text-primary"></i>
-                {{ sd.sensor.addr }}
+                {{ m.name }}
               </p>
             </div>
             <div class="tile is-child notification">
               <p class="has-text-left">
                 <i class="fas fa-clock"></i>
-                {{ sd.received_at }}
+                {{ m.receivedAt }}
               </p>
             </div>
           </div>
@@ -36,11 +38,11 @@ import axios from 'axios'
 
 export default {
   data: () => ({
-    sensorDatas: []
+    moistures: []
   }),
   mounted() {
     axios.get('http://localhost:3000/api/sensor').then(res => {
-      this.sensorDatas = res.data
+      this.moistures = res.data
     })
   }
 }

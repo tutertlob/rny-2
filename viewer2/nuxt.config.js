@@ -1,6 +1,7 @@
 const pkg = require('./package')
 
 module.exports = {
+  srcDir: 'front/',
   mode: 'universal',
 
   /*
@@ -47,7 +48,7 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
-  serverMiddleware: ['~/api/index.js'],
+  serverMiddleware: ['~~/api/index.js'],
 
   /*
   ** Build configuration
