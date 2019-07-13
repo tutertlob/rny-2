@@ -1,22 +1,24 @@
-# rny2
+# SOi MOi
 
-> rny2
+SOi MOiは「rny-2 土壌水分センサー」の値からプランターの水やり時期をお知らせするアプリケーションです。
 
-## Build Setup
+## Environments
 
-``` bash
-# install dependencies
-$ yarn install
+- NodeJS >=10
+- MongoDB
 
-# serve with hot reload at localhost:3000
-$ yarn run dev
+## Production
 
-# build for production and launch server
-$ yarn run build
-$ yarn start
-
-# generate static project
-$ yarn run generate
+```
+yarn install
+yarn run build
+yarn run start
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+## Development and Test
+
+```
+docker-compose up -d mongo
+node test/test_data_setup.js
+yarn dev
+```

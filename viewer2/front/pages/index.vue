@@ -7,7 +7,7 @@
             <div class="tile is-child">
               <p class="is-size-2">
                 <i v-if="m.moisture < 500" class="fas fa-tint has-text-info"></i>
-                <i v-else class="fas fa-sun has-text-danger"></i>
+                <i v-else class="fas fa-tint-slash has-text-grey"></i>
                 <br />
                 {{ m.moisture }}
               </p>
