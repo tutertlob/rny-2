@@ -19,25 +19,12 @@ const findOne = async col => {
   }
 }
 
-const findLatest = async col => {
-  try {
-    const result = await col
-      .find({}, { _id: 0, received_at: 1, 'data.moisture': 1 })
-      .sort({ received_at: -1 })
-      .limit(1)
-      .toArray()
-    return result[0]
-  } catch (err) {
-    logger.error(err)
-  }
-}
-
 router.get('/', async (req, res) => {
   const db = client.db(config.mongodb.db)
-  const coSen = db.collection(config.mongodb.collection.sensor)
-  const sensor = await findOne(coSen)
-  const coMoi = db.collection(config.mongodb.collection.soilmoisture)
-  const moisture = await findLatest(coMoi)
+  const sensor = await findOne(db.collection(config.mongodb.collection.sensor))
+  const moisture = await findOne(
+    db.collection(config.mongodb.collection.soilmoisture)
+  )
 
   const result = []
   moisture.data.forEach(m => {

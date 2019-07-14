@@ -31,23 +31,6 @@ const moistureData = [
       { id: 3, moisture: 711 },
       { id: 4, moisture: 235 }
     ]
-  },
-  {
-    sensor: {
-      version: 1,
-      panid: -1,
-      addr: 17477
-    },
-    received_at: '2019-06-20T23:54:56.552+0900',
-    packet_type: 'Notice',
-    content_type: 'soilmoisturemonitor;application/json',
-    rssi: -71,
-    data: [
-      { id: 1, moisture: 568 },
-      { id: 2, moisture: 309 },
-      { id: 3, moisture: 611 },
-      { id: 4, moisture: 135 }
-    ]
   }
 ]
 
