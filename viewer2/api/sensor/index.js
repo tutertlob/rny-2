@@ -1,9 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-const mongo = require('mongodb')
-const MongoClient = mongo.MongoClient
-
 const log4js = require('log4js')
 const logger = log4js.getLogger()
 
@@ -11,24 +8,11 @@ const config = require('config')
 
 logger.level = 'debug'
 
-const user = config.mongodb.user
-const pass = config.mongodb.pass
-const host = config.mongodb.host
-const port = config.mongodb.port
 const dbName = config.mongodb.db
 const colNameMoisture = config.mongodb.colMoisture
 const colNameSensor = config.mongodb.colSensor
 
-const url = `mongodb://${user}:${pass}@${host}:${port}`
-const options = {
-  useNewUrlParse: true
-}
-const client = new MongoClient(url, options)
-
-const setUp = async () => {
-  await client.connect()
-  logger.info('connected successfully')
-}
+const client = require('../db')
 
 const findOne = async col => {
   try {
@@ -69,7 +53,5 @@ router.get('/', async (req, res) => {
   })
   res.send(result)
 })
-
-setUp()
 
 module.exports = router
