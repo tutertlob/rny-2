@@ -8,10 +8,6 @@ const config = require('config')
 
 logger.level = 'debug'
 
-const dbName = config.mongodb.db
-const colNameMoisture = config.mongodb.colMoisture
-const colNameSensor = config.mongodb.colSensor
-
 const client = require('../db')
 
 const findOne = async col => {
@@ -37,10 +33,10 @@ const findLatest = async col => {
 }
 
 router.get('/', async (req, res) => {
-  const db = client.db(dbName)
-  const coSen = db.collection(colNameSensor)
+  const db = client.db(config.mongodb.db)
+  const coSen = db.collection(config.mongodb.collection.sensor)
   const sensor = await findOne(coSen)
-  const coMoi = db.collection(colNameMoisture)
+  const coMoi = db.collection(config.mongodb.collection.soilmoisture)
   const moisture = await findLatest(coMoi)
 
   const result = []

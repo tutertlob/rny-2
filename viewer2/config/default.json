@@ -5,7 +5,9 @@
         "user": "root",
         "pass": "example",
         "db": "rny2",
-        "colMoisture": "soilmoisture",
-        "colSensor": "sensor"
+        "collection": {
+            "soilmoisture": "soilmoisture",
+            "sensor": "sensor"
+        }
     }
 }
