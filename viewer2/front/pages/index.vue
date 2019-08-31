@@ -6,8 +6,11 @@
           <div class="tile is-4 is-parent">
             <div class="tile is-child">
               <p class="is-size-2">
-                <br />
-                <circular :content1="m.moisture"/>
+                <circular
+                  v-bind:percentage="m.percentage"
+                  v-bind:fontSize="'2rem'"
+                  v-bind:radius="'70px'"
+                />
               </p>
             </div>
           </div>

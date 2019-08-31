@@ -28,6 +28,10 @@ const scan = async col => {
   }
 }
 
+const calcPercentage = (moisture) => {
+  return Math.floor(((1023 - moisture) / 1023) * 100)
+}
+
 router.get('/', async (req, res) => {
   const db = client.db(config.mongodb.db)
   const sensors = await scan(db.collection(config.mongodb.collection.sensor))
@@ -41,6 +45,7 @@ router.get('/', async (req, res) => {
     result.push({
       name: sensor.name,
       moisture: m.moisture,
+      percentage: calcPercentage(m.moisture),
       threshold: sensor.threshold,
       receivedAt: moisture.received_at
     })
