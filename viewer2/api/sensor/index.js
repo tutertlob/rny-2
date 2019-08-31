@@ -19,18 +19,29 @@ const findOne = async col => {
   }
 }
 
+const scan = async col => {
+  try {
+    const result = await col.find({}).toArray()
+    return result
+  } catch (err) {
+    logger.error(err)
+  }
+}
+
 router.get('/', async (req, res) => {
   const db = client.db(config.mongodb.db)
-  const sensor = await findOne(db.collection(config.mongodb.collection.sensor))
+  const sensors = await scan(db.collection(config.mongodb.collection.sensor))
   const moisture = await findOne(
     db.collection(config.mongodb.collection.soilmoisture)
   )
 
   const result = []
   moisture.data.forEach(m => {
+    const sensor = sensors.find(s => s.sensorId === m.sensorId)
     result.push({
-      name: sensor[m.id],
+      name: sensor.name,
       moisture: m.moisture,
+      threshold: sensor.threshold,
       receivedAt: moisture.received_at
     })
   })

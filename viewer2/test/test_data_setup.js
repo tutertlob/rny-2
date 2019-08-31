@@ -7,12 +7,12 @@ const colSoilMoisture = 'soilmoisture'
 const colSensor = 'sensor'
 const options = { useNewUrlParser: true }
 
-const sensorData = {
-  1: 'Morning glory',
-  2: 'Sunflower',
-  3: 'Cosmos',
-  4: 'Tomato'
-}
+const sensorData = [
+  { sensorId: 1, name: 'Morning glory', threshold: 500 },
+  { sensorId: 2, name: 'Sunflower', threshold: 500 },
+  { sensorId: 3, name: 'Cosmos', threshold: 500 },
+  { sensorId: 4, name: 'Tomato', threshold: 500 }
+]
 
 const moistureData = [
   {
@@ -26,17 +26,13 @@ const moistureData = [
     content_type: 'soilmoisturemonitor;application/json',
     rssi: -71,
     data: [
-      { id: 1, moisture: 668 },
-      { id: 2, moisture: 409 },
-      { id: 3, moisture: 711 },
-      { id: 4, moisture: 235 }
+      { sensorId: 1, moisture: 668 },
+      { sensorId: 2, moisture: 409 },
+      { sensorId: 3, moisture: 711 },
+      { sensorId: 4, moisture: 235 }
     ]
   }
 ]
-
-const insOne = async (col, doc) => {
-  await col.insertOne(doc)
-}
 
 const insMany = async (col, docs) => {
   await col.insertMany(docs)
@@ -59,7 +55,7 @@ const main = async () => {
 
   const coSen = db.collection(colSensor)
   await delMany(coSen)
-  await insOne(coSen, sensorData)
+  await insMany(coSen, sensorData)
   const docSen = await scanData(coSen)
   console.log(docSen)
 

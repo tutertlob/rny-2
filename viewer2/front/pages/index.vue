@@ -6,17 +6,16 @@
           <div class="tile is-4 is-parent">
             <div class="tile is-child">
               <p class="is-size-2">
-                <i v-if="m.moisture < 500" class="fas fa-tint has-text-info"></i>
-                <i v-else class="fas fa-tint-slash has-text-grey"></i>
                 <br />
-                {{ m.moisture }}
+                <circular :content1="m.moisture"/>
               </p>
             </div>
           </div>
           <div class="tile is-vertical is-parent">
             <div class="tile is-child">
               <p class="is-size-4 has-text-left">
-                <i class="fas fa-seedling has-text-primary"></i>
+                <i v-if="m.moisture < m.threshold" class="fas fa-tint has-text-info"></i>
+                <i v-else class="fas fa-tint-slash has-text-grey"></i>
                 {{ m.name }}
               </p>
             </div>
@@ -35,11 +34,15 @@
 
 <script>
 import axios from 'axios'
+import Circular from '~/components/Circular'
 
 export default {
   data: () => ({
     moistures: []
   }),
+  components: {
+    Circular
+  },
   mounted() {
     axios.get('http://localhost:3000/api/sensor').then(res => {
       this.moistures = res.data
