@@ -28,7 +28,7 @@ const scan = async col => {
   }
 }
 
-const calcPercentage = (moisture) => {
+const calcPercentage = moisture => {
   return Math.floor(((1023 - moisture) / 1023) * 100)
 }
 

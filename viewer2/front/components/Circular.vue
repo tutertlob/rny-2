@@ -14,13 +14,12 @@
         <circle class="circle-background" />
         <circle class="circle-foreground1" />
       </svg>
-      <figcaption></figcaption>
+      <figcaption />
     </figure>
   </div>
 </template>
 <script>
 export default {
-  name: 'circular',
   props: {
     percentage: { type: Number, default: 0 },
     fontSize: { type: String, default: '2.5rem' },

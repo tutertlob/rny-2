@@ -15,7 +15,7 @@ const port = config.mongodb.port
 
 const url = `mongodb://${user}:${pass}@${host}:${port}`
 const options = {
-  useNewUrlParse: true
+  useNewUrlParser: true
 }
 const client = new MongoClient(url, options)
 
